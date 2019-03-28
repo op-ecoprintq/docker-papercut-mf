@@ -6,7 +6,7 @@ chmod +x /home/papercut/server/bin/linux-x64/setperms
 /home/papercut/server/bin/linux-x64/setperms
 
 # Perform only if Papercut service exists
-if systemctl list-unit-files | grep pc-app-server.service; then
+if [[ -x /etc/init.d/papercut ]]; then
 
     # If database dir has been volume mounted on host the image database will be overwritten
     # and therefore database needs to initialized
@@ -20,8 +20,8 @@ if systemctl list-unit-files | grep pc-app-server.service; then
         runuser -l papercut -c "/home/papercut/server/bin/linux-x64/db-tools import-db -q -f /home/papercut/import.zip"
     fi
 
-    echo "Starting Papercut service"
-    exec systemctl start pc-app-server
+    echo "Starting Papercut service in console"
+    exec /etc/init.d/papercut console
 else
     echo "Papercut service not found, maybe the docker image/build got corrupted? Exiting..."
 fi
