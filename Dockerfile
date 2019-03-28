@@ -43,8 +43,8 @@ USER root
 RUN ${PAPERCUT_HOME}/server/bin/linux-x64/roottasks
 
 # Stop web print and print provider services
-RUN systemctl stop pc-web-print.service
-RUN systemctl stop pc-event-monitor.service
+#RUN systemctl stop pc-web-print.service
+#RUN systemctl stop pc-event-monitor.service
 
 # Volumes
 VOLUME /home/papercut/server/logs /home/papercut/server/data
