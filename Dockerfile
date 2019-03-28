@@ -7,9 +7,8 @@ LABEL description="PaperCut MF Application Server"
 ENV PAPERCUT_VERSION 18.3.8.48906
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/18.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
-# Update Ubuntu
+# Install needed tools
 RUN apt-get update
-RUN apt-get upgrade -y
 RUN apt-get install wget cpio -y
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -29,12 +28,11 @@ USER papercut
 WORKDIR /home/papercut
 
 # Download papercut
-RUN wget "${PAPERCUT_DOWNLOAD_URL}" -O pcmf-setup.sh
+RUN wget "${PAPERCUT_DOWNLOAD_URL}" -O pcmf-setup.sh -nv
 
 # Run the PaperCut installer
 RUN sh ./pcmf-setup.sh --non-interactive
 RUN rm -f pcmf-setup.sh
-
 
 # Switch back to root user and run the root commands
 USER root
