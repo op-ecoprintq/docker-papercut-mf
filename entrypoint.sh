@@ -6,7 +6,7 @@ chmod +x /home/papercut/server/bin/linux-x64/setperms
 /home/papercut/server/bin/linux-x64/setperms
 
 # Perform only if Papercut service exists
-if service --status-all 2>&1 | grep -Fq 'pc-app-server'; then
+if systemctl list-unit-files | grep pc-app-server.service; then
 
     # If database dir has been volume mounted on host the image database will be overwritten
     # and therefore database needs to initialized
