@@ -21,6 +21,7 @@ RUN chmod +x /entrypoint.sh
 
 # Create papercut user and home
 RUN useradd -m -d /home/papercut papercut
+RUN usermod -s /bin/bash papercut
 ENV PAPERCUT_HOME /home/papercut
 
 # Switch user and directory
