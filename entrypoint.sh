@@ -17,7 +17,7 @@ if service --status-all 2>&1 | grep -Fq 'pc-app-server'; then
     # If an import hasn't been done before and a database backup file name
     # 'import.zip' exists, perform import.
     if [[ -f /home/papercut/import.zip ]] && [[ ! -f /home/papercut/import.log ]]; then
-        runuser -l papercut -c "/home/papercut/server/bin/linux-x64/db-tools import-db -q -f /papercut/import.zip"
+        runuser -l papercut -c "/home/papercut/server/bin/linux-x64/db-tools import-db -q -f /home/papercut/import.zip"
     fi
 
     echo "Starting Papercut service"
