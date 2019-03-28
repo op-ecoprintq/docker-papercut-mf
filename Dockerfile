@@ -40,14 +40,14 @@ RUN papercut/install
 
 # Switch back to root user and run the root commands
 USER root
-RUN ${HOME}/server/bin/linux-x64/roottasks
+RUN ${PAPERCUT_HOME}/server/bin/linux-x64/roottasks
 
 # Stop web print and print provider services
 RUN systemctl stop pc-web-print.service
 RUN systemctl stop pc-event-monitor.service
 
 # Volumes
-VOLUME /home/papercut/server/logs /papercut/server/data
+VOLUME /home/papercut/server/logs /home/papercut/server/data
 
 # Ports
 EXPOSE 9191 9192 9193
