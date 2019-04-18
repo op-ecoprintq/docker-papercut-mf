@@ -4,12 +4,12 @@ LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
 # Variables
-ENV PAPERCUT_VERSION 18.3.8.48906
+ENV PAPERCUT_VERSION 19.0.2.49181
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/18.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
-# Install needed tools
+# Update Ubuntu
 RUN apt-get update
-RUN apt-get install wget cpio -y
+RUN apt-get upgrade -y
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # entrypoint.sh is a script to initialize the db if necessary
@@ -20,7 +20,6 @@ RUN chmod +x /entrypoint.sh
 
 # Create papercut user and home
 RUN useradd -m -d /home/papercut papercut
-RUN usermod -s /bin/bash papercut
 ENV PAPERCUT_HOME /home/papercut
 
 # Switch user and directory
@@ -28,22 +27,25 @@ USER papercut
 WORKDIR /home/papercut
 
 # Download papercut
-RUN wget "${PAPERCUT_DOWNLOAD_URL}" -O pcmf-setup.sh -nv
+RUN wget "#{PAPERCUT_DOWNLOAD_URL}"
 
 # Run the PaperCut installer
-RUN sh ./pcmf-setup.sh --non-interactive
-RUN rm -f pcmf-setup.sh
+RUN sh ./pcmf-setup-${PAPERCUT_VERSION}.sh -e
+RUN rm /home/papercut/papercut/LICENCE.TXT
+RUN sed -i 's/read reply leftover//g' papercut/install
+RUN sed -i 's/answered=/answered=0/g' papercut/install
+RUN papercut/install
 
 # Switch back to root user and run the root commands
 USER root
-RUN ${PAPERCUT_HOME}/MUST-RUN-AS-ROOT
+RUN ${HOME}/server/bin/linux-x64/roottasks
 
-# Stopping Papercut services before capturing image
-RUN /etc/init.d/papercut stop
-RUN /etc/init.d/papercut-web-print stop
+# Stop web print and print provider services
+RUN systemctl stop pc-web-print.service
+RUN systemctl stop pc-event-monitor.service
 
 # Volumes
-VOLUME /home/papercut/server/logs /home/papercut/server/data
+VOLUME /home/papercut/server/logs /papercut/server/data
 
 # Ports
 EXPOSE 9191 9192 9193
