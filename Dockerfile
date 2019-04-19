@@ -5,7 +5,7 @@ LABEL description="PaperCut MF Application Server"
 
 # Variables
 ENV PAPERCUT_VERSION 19.0.2.49181
-ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/18.x/pcmf-setup-${PAPERCUT_VERSION}.sh
+ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/19.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
 # Update Ubuntu
 RUN apt-get update
