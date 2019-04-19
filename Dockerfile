@@ -10,7 +10,7 @@ ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installer
 # Update Ubuntu
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install wget
+RUN apt-get install wget cpio -y
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # entrypoint.sh is a script to initialize the db if necessary
