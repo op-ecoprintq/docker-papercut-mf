@@ -28,7 +28,7 @@ USER papercut
 WORKDIR /home/papercut
 
 # Download papercut
-RUN wget "#{PAPERCUT_DOWNLOAD_URL}"
+RUN wget ${PAPERCUT_DOWNLOAD_URL}
 
 # Run the PaperCut installer
 RUN sh ./pcmf-setup-${PAPERCUT_VERSION}.sh -e
