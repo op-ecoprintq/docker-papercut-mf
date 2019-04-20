@@ -39,7 +39,7 @@ RUN papercut/install
 
 # Switch back to root user and run the root commands
 USER root
-RUN ${HOME}/server/bin/linux-x64/roottasks
+RUN ${PAPERCUT_HOME}/server/bin/linux-x64/roottasks
 
 # Stop web print and print provider services
 RUN systemctl stop pc-web-print.service
