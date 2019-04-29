@@ -4,7 +4,7 @@ LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
 # Variables
-ENV PAPERCUT_VERSION 19.0.2.49181
+ENV PAPERCUT_VERSION 19.0.3.49324
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/19.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
 # Update Ubuntu
@@ -42,8 +42,8 @@ USER root
 RUN ${PAPERCUT_HOME}/server/bin/linux-x64/roottasks
 
 # Stop web print and print provider services
-RUN systemctl stop pc-web-print.service
-RUN systemctl stop pc-event-monitor.service
+#RUN systemctl stop pc-web-print.service
+#RUN systemctl stop pc-event-monitor.service
 
 # Volumes
 VOLUME /home/papercut/server/logs /papercut/server/data
