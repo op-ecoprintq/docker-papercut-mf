@@ -12,6 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Ubuntu
 RUN apt-get update
+RUN apt-get install apt-utils -y
 RUN apt-get upgrade -y
 RUN apt-get install wget cpio -y
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -24,7 +25,6 @@ RUN chmod +x /entrypoint.sh
 
 # Create papercut user and home
 RUN useradd -m -d /home/papercut papercut
-ENV PAPERCUT_HOME /home/papercut
 
 # Switch user and directory
 USER papercut
@@ -42,7 +42,7 @@ RUN papercut/install
 
 # Switch back to root user and run the root commands
 USER root
-RUN ${PAPERCUT_HOME}/server/bin/linux-x64/roottasks
+RUN /home/papercut/server/bin/linux-x64/roottasks
 
 # Volumes
 VOLUME /home/papercut/server/logs /papercut/server/data
