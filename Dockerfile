@@ -7,6 +7,9 @@ LABEL description="PaperCut MF Application Server"
 ENV PAPERCUT_VERSION 19.0.3.49324
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/19.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
+# Set to non-interactive mode for the build
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Update Ubuntu
 RUN apt-get update
 RUN apt-get upgrade -y
