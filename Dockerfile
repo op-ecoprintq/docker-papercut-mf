@@ -28,7 +28,7 @@ USER papercut
 WORKDIR /home/papercut
 
 # Download papercut
-RUN wget ${PAPERCUT_DOWNLOAD_URL}
+RUN wget ${PAPERCUT_DOWNLOAD_URL} -nv
 
 # Run the PaperCut installer
 RUN sh ./pcmf-setup-${PAPERCUT_VERSION}.sh -e
@@ -40,10 +40,6 @@ RUN papercut/install
 # Switch back to root user and run the root commands
 USER root
 RUN ${PAPERCUT_HOME}/server/bin/linux-x64/roottasks
-
-# Stop web print and print provider services
-#RUN systemctl stop pc-web-print.service
-#RUN systemctl stop pc-event-monitor.service
 
 # Volumes
 VOLUME /home/papercut/server/logs /papercut/server/data
