@@ -11,7 +11,9 @@ ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installer
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Ubuntu
-RUN apt-get install wget cpio -y --no-install-recommends \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install wget cpio -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
