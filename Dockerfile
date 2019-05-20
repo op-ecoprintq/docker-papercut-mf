@@ -13,7 +13,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Update Ubuntu
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install wget cpio -y \
+    && apt-get install wget cpio -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
