@@ -4,7 +4,7 @@ LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
 # Variables
-ENV PAPERCUT_VERSION 19.0.3.49324
+ENV PAPERCUT_VERSION 19.0.4.495834
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/19.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
 # Set to non-interactive mode for the build
@@ -13,7 +13,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Update Ubuntu
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install wget cpio -y --no-install-recommends \
+    && apt-get install wget cpio -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
