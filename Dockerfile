@@ -35,17 +35,17 @@ RUN wget ${PAPERCUT_DOWNLOAD_URL} -nv
 
 # Run the PaperCut installer
 RUN sh ./pcmf-setup-${PAPERCUT_VERSION}.sh -e
-RUN rm /home/papercut/papercut/LICENCE.TXT
-RUN sed -i 's/read reply leftover//g' papercut/install
-RUN sed -i 's/answered=/answered=0/g' papercut/install
-RUN papercut/install
+#RUN rm /home/papercut/papercut/LICENCE.TXT#
+#RUN sed -i 's/read reply leftover//g' papercut/install
+#RUN sed -i 's/answered=/answered=0/g' papercut/install
+RUN papercut/install --non-interactive
 
 # Switch back to root user and run the root commands
 USER root
 RUN /home/papercut/server/bin/linux-x64/roottasks
 
 # Volumes
-VOLUME /home/papercut/server/logs /papercut/server/data
+VOLUME /home/papercut/server/logs /home/papercut/server/data
 
 # Ports
 EXPOSE 9191 9192 9193
