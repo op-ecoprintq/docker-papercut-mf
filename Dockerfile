@@ -38,7 +38,7 @@ RUN sh ./pcmf-setup-${PAPERCUT_VERSION}.sh -e
 #RUN rm /home/papercut/papercut/LICENCE.TXT#
 #RUN sed -i 's/read reply leftover//g' papercut/install
 #RUN sed -i 's/answered=/answered=0/g' papercut/install
-RUN papercut/install --non-interactive
+RUN papercut/install --non-interactive --no-version-check
 
 # Switch back to root user and run the root commands
 USER root
