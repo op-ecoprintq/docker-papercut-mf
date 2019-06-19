@@ -20,11 +20,9 @@ RUN apt-get update \
 # entrypoint.sh is a script to initialize the db if necessary
 COPY entrypoint.sh /
 
-# Make entrypoint.sh executable
-RUN chmod +x /entrypoint.sh
-
 # Create papercut user and home
-RUN useradd -m -d /home/papercut papercut
+RUN chmod +x /entrypoint.sh \
+    && useradd -m -d /home/papercut papercut
 
 # Switch user and directory
 USER papercut
