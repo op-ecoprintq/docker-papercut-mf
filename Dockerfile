@@ -33,12 +33,11 @@ WORKDIR /home/papercut
 # Download papercut
 RUN wget ${PAPERCUT_DOWNLOAD_URL} -nv
 
-# Run the PaperCut installer
-RUN sh ./pcmf-setup-${PAPERCUT_VERSION}.sh -e
-#RUN rm /home/papercut/papercut/LICENCE.TXT#
-#RUN sed -i 's/read reply leftover//g' papercut/install
-#RUN sed -i 's/answered=/answered=0/g' papercut/install
-RUN papercut/install --non-interactive --no-version-check
+# Run the PaperCut installer & cleanup
+RUN sh /home/papercut/pcmf-setup-${PAPERCUT_VERSION}.sh -e \
+    && sh /home/papercut/papercut/install --non-interactive --no-version-check \
+    && sh /home/papercut/server/bin/linux-x64/create-ssl-keystore -f -keystoreentry highsec -sig sha356 -bcCa \
+    && rm -rf /home/papercut/papercut/
 
 # Switch back to root user and run the root commands
 USER root
