@@ -10,7 +10,6 @@ ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installer
 # Set to non-interactive mode for the build
 ARG DEBIAN_FRONTEND=noninteractive
 
-#&& apt-get upgrade -y \
 # Update Ubuntu
 RUN apt-get update \
     && apt-get install wget cpio -y \
