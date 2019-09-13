@@ -42,6 +42,6 @@ RUN /home/papercut/server/bin/linux-x64/roottasks
 VOLUME /home/papercut/server/logs /home/papercut/server/data
 
 # Ports
-EXPOSE 9191 9192 9193
+EXPOSE 9191 9192 9193 9173 9174
 
 ENTRYPOINT ["/entrypoint.sh"]
