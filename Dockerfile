@@ -1,10 +1,10 @@
-# Use Ubuntu 19.04 base image
-FROM ubuntu:19.04
+# Use Debian Buster base image
+FROM debian:10.1-slim
 LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
 # Variables
-ENV PAPERCUT_VERSION 19.1.2.52029
+ENV PAPERCUT_VERSION 19.1.3.52103
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/19.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
 # Set to non-interactive mode for the build
