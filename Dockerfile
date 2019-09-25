@@ -1,5 +1,5 @@
 # Use Debian Buster base image
-FROM debian:10.1-slim
+FROM debian:buster-slim
 LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
