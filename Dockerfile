@@ -12,7 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Update Ubuntu
 RUN apt-get update \
-    && apt-get install wget cpio procps -y \
+    && apt-get install wget cpio procps -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
