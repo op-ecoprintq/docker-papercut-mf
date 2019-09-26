@@ -28,7 +28,7 @@ USER papercut
 WORKDIR /home/papercut
 
 # Run the PaperCut installer & cleanup
-RUN wget ${PAPERCUT_DOWNLOAD_URL} -nv \
+RUN wget ${PAPERCUT_DOWNLOAD_URL} --no-verbose --no-check-certificate \
     && sh /home/papercut/pcmf-setup-${PAPERCUT_VERSION}.sh -e \
     && sh /home/papercut/papercut/install --non-interactive --no-version-check \
     && sh /home/papercut/server/bin/linux-x64/create-ssl-keystore -f -keystoreentry highsec -sig sha256 -bcCa \
