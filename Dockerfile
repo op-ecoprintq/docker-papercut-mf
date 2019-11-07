@@ -40,7 +40,7 @@ USER root
 RUN /home/papercut/server/bin/linux-x64/roottasks
 
 # Volumes
-VOLUME /home/papercut/server/logs /home/papercut/server/data/internal /home/papercut/server/custom /home/papercut/server/server.properties
+VOLUME /home/papercut/server
 
 # Ports
 EXPOSE 9191 9192 9193 9173 9174
