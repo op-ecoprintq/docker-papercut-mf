@@ -4,7 +4,7 @@ LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
 # Variables
-ENV PAPERCUT_VERSION 19.2.1.52937
+ENV PAPERCUT_VERSION 19.2.2.53440
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/19.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
 # Set to non-interactive mode for the build
@@ -43,6 +43,6 @@ RUN /home/papercut/server/bin/linux-x64/roottasks
 VOLUME /home/papercut/server
 
 # Ports
-EXPOSE 9191 9192 9193 9173 9174
+EXPOSE 9191 9192 9193 9195 9173 9174
 
 ENTRYPOINT ["/entrypoint.sh"]
