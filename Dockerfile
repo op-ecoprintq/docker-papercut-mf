@@ -1,5 +1,5 @@
-# Use baseimage
-FROM phusion/baseimage:latest
+# Use Debian Buster base image
+FROM debian:buster-slim
 LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
