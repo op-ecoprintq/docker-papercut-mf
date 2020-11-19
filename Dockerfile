@@ -4,7 +4,7 @@ LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
 # Variables
-ENV PAPERCUT_VERSION 20.0.4.55447
+ENV PAPERCUT_VERSION 20.1.1.55782
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/20.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
 # Set to non-interactive mode for the build
