@@ -21,8 +21,7 @@ COPY entrypoint.sh /
 
 # Create papercut user and home
 RUN chmod +x /entrypoint.sh \
-    && useradd -m -d /home/papercut papercut \
-    && chsh --shell /bin/bash papercut
+    && useradd -m -d /home/papercut -s /bin/bash papercut
 
 # Switch user and directory
 USER papercut
