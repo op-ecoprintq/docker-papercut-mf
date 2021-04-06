@@ -10,7 +10,7 @@ ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installer
 # Set to non-interactive mode for the build
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Update Ubuntu
+# Update Debian
 RUN apt-get update \
     && apt-get install wget cpio procps ca-certificates -y --no-install-recommends \
     && apt-get clean \
