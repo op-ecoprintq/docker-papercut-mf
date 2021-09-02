@@ -1,10 +1,10 @@
 # Use Debian Buster base image
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 LABEL maintainer="ecoprintQ"
 LABEL description="PaperCut MF Application Server"
 
 # Variables
-ENV PAPERCUT_VERSION 21.0.3.57306
+ENV PAPERCUT_VERSION 21.1.1.57908
 ENV PAPERCUT_DOWNLOAD_URL https://cdn1.papercut.com/web/products/ng-mf/installers/mf/21.x/pcmf-setup-${PAPERCUT_VERSION}.sh
 
 # Set to non-interactive mode for the build
