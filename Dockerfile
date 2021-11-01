@@ -37,6 +37,7 @@ RUN wget ${PAPERCUT_DOWNLOAD_URL} --no-verbose --no-check-certificate \
 # Switch back to root user and run the root commands
 USER root
 RUN /home/papercut/server/bin/linux-x64/roottasks
+USER papercut
 
 # Volumes
 VOLUME /home/papercut/server
